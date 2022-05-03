@@ -29,6 +29,12 @@ inquirer
       name: "Collaborators",
       message: "List any Collaborators Names or GitHub usernames",
     },
+    {
+      type: "input",
+      name: "Screenshot",
+      message:
+        "List the URL for a good, descriptive screenshot of the App in use",
+    },
   ])
 
   .then((data) => {
