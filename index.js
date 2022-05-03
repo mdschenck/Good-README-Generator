@@ -5,42 +5,43 @@ inquirer
   .prompt([
     {
       type: "input",
-      name: "name",
-      message: "What is your name?",
+      name: "Name",
+      message: "What is the name of the Application?",
     },
     {
       type: "input",
-      name: "Location",
-      message: "Where are you located?",
+      name: "Description",
+      message:
+        "What is the basic description of the application's functionality ?",
     },
     {
       type: "input",
-      name: "bio",
-      message: "Write a short Bio about yourself",
+      name: "Link",
+      message: "What is the URL to the Deployed Application",
     },
     {
       type: "input",
-      name: "gitHub",
-      message: "What is your GitHub URL",
+      name: "Useage",
+      message: "Describe the Useage of your Application",
     },
     {
       type: "input",
-      name: "linkedIn",
-      message: "What is your LinkedIn URL",
+      name: "Collaborators",
+      message: "List any Collaborators Names or GitHub usernames",
     },
   ])
 
   .then((data) => {
     console.log(data);
-    const html = generateHtml(data);
-    const filename = `index.html`;
+    const readMe = generateReadMe(data);
+    const filename = `README.md`;
 
     fs.writeFile(filename, html, (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
 
-function generateHtml(data) {
+function generateReadMe(data) {
   return;
   `Readme Document HERE`;
 }

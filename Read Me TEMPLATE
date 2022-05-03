@@ -1,0 +1,23 @@
+# Wildlife Census
+
+# Description:
+
+${appDescription}
+
+# User Story:
+
+${userStory}
+
+# Link to Deployed Application:
+
+${deployedUrl}
+
+# Collaborators:
+
+${collaborators}
+
+# Usage:
+
+${useage}
+
+![Screenshot showing deployed application on page load](${screenshotUrl})
