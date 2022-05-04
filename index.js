@@ -21,19 +21,23 @@ inquirer
     },
     {
       type: "input",
-      name: "Useage",
-      message: "Describe the Useage of your Application",
-    },
-    {
-      type: "input",
       name: "Collaborators",
       message: "List any Collaborators Names or GitHub usernames",
     },
     {
       type: "input",
+      name: "Useage",
+      message: "Describe the Useage of your Application",
+    },
+    {
+      type: "input",
       name: "Screenshot",
-      message:
-        "List the URL for a good, descriptive screenshot of the App in use",
+      message: "List the URL for a screenshot of the App in use",
+    },
+    {
+      type: "input",
+      name: "License",
+      message: "Project License Information",
     },
   ])
 
@@ -42,12 +46,33 @@ inquirer
     const readMe = generateReadMe(data);
     const filename = `README.md`;
 
-    fs.writeFile(filename, html, (err) =>
+    fs.writeFile(filename, readMe, (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
 
 function generateReadMe(data) {
-  return;
-  `Readme Document HERE`;
+  return `# ${data.Name}
+
+  # Description:
+  
+  ${data.Description}
+  
+  # Link to Deployed Application:
+  
+  ${data.Link}
+  
+  # Collaborators:
+  
+  ${data.Collaborators}
+  
+  # Usage:
+  
+  ${data.Useage}
+  
+  ![Screenshot showing deployed application on page load](${data.Screenshot})
+  
+  # License:
+  
+  ${data.License}`;
 }
