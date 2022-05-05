@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { Console } = require("console");
 
 inquirer
   .prompt([
@@ -21,8 +22,8 @@ inquirer
     },
     {
       type: "input",
-      name: "Collaborators",
-      message: "List any Collaborators Names or GitHub usernames",
+      name: "Installation",
+      message: "List the steps necessary for installation.",
     },
     {
       type: "input",
@@ -32,12 +33,31 @@ inquirer
     {
       type: "input",
       name: "Screenshot",
-      message: "List the URL for a screenshot of the App in use",
+      message: "List the URL for a screenshot of the application in use",
     },
     {
-      type: "input",
+      type: "checkbox",
       name: "License",
-      message: "Project License Information",
+      message: "Choose a License",
+      choices: ["MIT", "Eclipse", "GNU GPL v3", "Creative Commons CC0"],
+    },
+
+    {
+      type: "input",
+      name: "Contributions",
+      message: "List guidelines to contribute to the project",
+    },
+
+    {
+      type: "input",
+      name: "Tests",
+      message: "List test instructions",
+    },
+
+    {
+      type: "input",
+      name: "Questions",
+      message: "What is the contact Email for Questions?",
     },
   ])
 
@@ -52,21 +72,70 @@ inquirer
   });
 
 function generateReadMe(data) {
-  return `# ${data.Name}
+  let dispLicenseBadge;
+  let licenseURL;
+  let inputLicense = data.License[0];
+
+  console.log(inputLicense);
+
+  switch (inputLicense) {
+    case "MIT":
+      dispLicenseBadge =
+        "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
+      licenseURL = "https://opensource.org/licenses/MIT";
+      break;
+
+    case "Eclipse":
+      dispLicenseBadge =
+        "[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)]";
+      licenseURL = "https://opensource.org/licenses/EPL-1.0";
+      break;
+
+    case "GNU GPL v3":
+      dispLicenseBadge =
+        "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]";
+      licenseURL = "https://www.gnu.org/licenses/gpl-3.0";
+      break;
+
+    case "Creative Commons CC0":
+      dispLicenseBadge =
+        "[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]";
+      licenseURL = "http://creativecommons.org/publicdomain/zero/1.0/";
+      break;
+  }
+
+  return `# ${data.Name}   ${dispLicenseBadge}
 
   # Description:
   
   ${data.Description}
-  
+
   # Link to Deployed Application:
   
   ${data.Link}
+
+
+  #Table of Contents
   
-  # Collaborators:
+  [1. Installation](#installation)
+
+  [2. Useage](#useage)
+
+  [3. License](#license)
+
+  [4. Contribution Guidelines](#contribution-guidelines)
+
+  [5. Tests](#tests)
+
+  [6. Questions](#questions)
+
   
-  ${data.Collaborators}
+
+  # Installation:
   
-  # Usage:
+  ${data.Installation}
+  
+  # Useage:
   
   ${data.Useage}
   
@@ -74,5 +143,25 @@ function generateReadMe(data) {
   
   # License:
   
-  ${data.License}`;
+  ${data.License} URL: ${licenseURL}
+
+  # Contribution Guidelines:
+
+  ${data.Contributions}
+
+  # Tests
+
+  ${data.Tests}
+
+  # Questions?
+
+  ${data.Questions}
+
+
+
+
+
+
+
+  `;
 }
