@@ -8,7 +8,7 @@ A quick and easy to use generator to make README.md files for user projects and 
 
 Since this application is not deployed in a live web asset, we can demonstrate it's functionality in this runthrough video.
 
-https://drive.google.com/file/d/1IluMUKj9YYBB0f35l-4IXP_H4BdHzXnb/view
+https://drive.google.com/file/d/1tT_AZfx0ph8u8URMMLXke8iNH4iVHIZu/view
 
 # Usage:
 

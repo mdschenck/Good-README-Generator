@@ -36,7 +36,7 @@ inquirer
       message: "List the URL for a screenshot of the application in use",
     },
     {
-      type: "checkbox",
+      type: "list",
       name: "License",
       message: "Choose a License",
       choices: ["MIT", "Eclipse", "GNU GPL v3", "Creative Commons CC0"],
@@ -74,7 +74,7 @@ inquirer
 function generateReadMe(data) {
   let dispLicenseBadge;
   let licenseURL;
-  let inputLicense = data.License[0];
+  let inputLicense = data.License;
 
   console.log(inputLicense);
 
@@ -87,19 +87,19 @@ function generateReadMe(data) {
 
     case "Eclipse":
       dispLicenseBadge =
-        "[![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)]";
+        "![License](https://img.shields.io/badge/License-EPL_1.0-red.svg)";
       licenseURL = "https://opensource.org/licenses/EPL-1.0";
       break;
 
     case "GNU GPL v3":
       dispLicenseBadge =
-        "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)]";
+        "![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)";
       licenseURL = "https://www.gnu.org/licenses/gpl-3.0";
       break;
 
     case "Creative Commons CC0":
       dispLicenseBadge =
-        "[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]";
+        "![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)";
       licenseURL = "http://creativecommons.org/publicdomain/zero/1.0/";
       break;
   }
@@ -156,12 +156,6 @@ function generateReadMe(data) {
   # Questions?
 
   ${data.Questions}
-
-
-
-
-
-
 
   `;
 }
